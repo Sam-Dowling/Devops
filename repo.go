@@ -44,6 +44,7 @@ func RepoDestroyTask(id int) bool {
 		if t.Id == id {
 			mutex.Lock()
 			tasks = append(tasks[:i], tasks[i+1:]...)
+			currentID--
 			mutex.Unlock()
 			return true
 		}

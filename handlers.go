@@ -60,17 +60,17 @@ func TaskCreate(w http.ResponseWriter, r *http.Request) {
 	}
 	if err := json.Unmarshal(body, &task); err != nil {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(422) // unprocessable entity
-		if err := json.NewEncoder(w).Encode(err); err != nil {
+		w.WriteHeader(http.StatusUnprocessableEntity)
+		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusUnprocessableEntity, Text: "Improperly formatted task"}); err != nil {
 			panic(err)
 		}
-	}
-
-	t := RepoCreateTask(task)
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.WriteHeader(http.StatusCreated)
-	if err := json.NewEncoder(w).Encode(t); err != nil {
-		panic(err)
+	} else {
+		t := RepoCreateTask(task)
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusCreated)
+		if err := json.NewEncoder(w).Encode(t); err != nil {
+			panic(err)
+		}
 	}
 }
 
@@ -86,8 +86,8 @@ func TaskUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 	if err := json.Unmarshal(body, &task); err != nil {
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-		w.WriteHeader(422) // unprocessable entity
-		if err := json.NewEncoder(w).Encode(err); err != nil {
+		w.WriteHeader(http.StatusUnprocessableEntity)
+		if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusUnprocessableEntity, Text: "Improperly formatted task"}); err != nil {
 			panic(err)
 		}
 	}

@@ -8,3 +8,6 @@ run:
 	
 test:
 	python tests/main.py
+	
+docker_build:
+	docker build -t "taskapi" .

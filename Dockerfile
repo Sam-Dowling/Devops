@@ -1,4 +1,4 @@
 FROM golang
-EXPOSE 1234
+EXPOSE 8080
 COPY TaskAPI /usr/bin/
 CMD TaskAPI

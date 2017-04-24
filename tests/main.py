@@ -2,7 +2,7 @@ import requests
 import unittest
 import time
 
-BASE_URL = 'http://127.0.0.1:8080'
+BASE_URL = 'http://127.0.0.1:1234'
 
 TASK = '{"name": "TEST", "completed": false, "due": "2000-01-01T00:00:00.000000Z"}'
 TASK_UPDATE = '{"name": "TEST", "completed": true, "due": "2000-01-01T00:00:00.000000Z"}'

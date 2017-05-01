@@ -1,3 +1,5 @@
+unit_test:
+	go test
 
 compile:
 	go get github.com/gorilla/mux
